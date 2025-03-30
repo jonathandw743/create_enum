@@ -1,0 +1,111 @@
+// #[create_enum(TechTrait)]
+// pub struct Tech {
+//     booster: BoosterTech,
+//     brake: BrakeTech,
+//     high: HighTech,
+//     input: InputTech,
+// }
+
+// #[enum_dispatch(TechTrait)]
+// #[derive(Debug, bevy_reflect::Reflect, strum::EnumDiscriminants, Clone)]
+// #[strum_discriminants(
+//     derive(Reflect, Hash, strum_macros::EnumIter),
+//     reflect(Debug, Hash, PartialEq),
+//     vis(pub)
+// )]
+// pub enum TechEnum {
+//     BoosterTech,
+//     BrakeTech,
+//     HighTech,
+//     InputTech,
+// }
+// impl Tech {
+//     pub fn clone_to_enum(&self, discriminant: TechEnumDiscriminants) -> TechEnum {
+//         match discriminant {
+//             TechEnumDiscriminants::BoosterTech => TechEnum::BoosterTech(self.booster.clone()),
+//             TechEnumDiscriminants::InputTech => TechEnum::InputTech(self.input.clone()),
+//             TechEnumDiscriminants::HighTech => TechEnum::HighTech(self.high.clone()),
+//             TechEnumDiscriminants::BrakeTech => TechEnum::BrakeTech(self.brake.clone()),
+//         }
+//     }
+//     pub fn to_trait(&self, discriminant: TechEnumDiscriminants) -> &dyn TechTrait {
+//         match discriminant {
+//             TechEnumDiscriminants::BoosterTech => &self.booster,
+//             TechEnumDiscriminants::InputTech => &self.input,
+//             TechEnumDiscriminants::HighTech => &self.high,
+//             TechEnumDiscriminants::BrakeTech => &self.brake,
+//         }
+//     }
+//     pub fn to_trait_mut(&mut self, discriminant: TechEnumDiscriminants) -> &mut dyn TechTrait {
+//         match discriminant {
+//             TechEnumDiscriminants::BoosterTech => &mut self.booster,
+//             TechEnumDiscriminants::InputTech => &mut self.input,
+//             TechEnumDiscriminants::HighTech => &mut self.high,
+//             TechEnumDiscriminants::BrakeTech => &mut self.brake,
+//         }
+//     }
+// }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+#[create_enum(TT)]
+pub struct T {
+    a: A,
+    b: B,
+}
+
+#[enum_dispatch]
+trait TT {
+    fn foo(&self) -> i32;
+}
+
+#[derive(Debug, Reflect, Clone)]
+struct A(i32);
+
+impl TT for A {
+    fn foo(&self) -> i32 {
+        self.0
+    }
+}
+
+#[derive(Debug, Reflect, Clone)]
+struct B(i32);
+
+impl TT for B {
+    fn foo(&self) -> i32 {
+        self.0
+    }
+}
+
+
+// #[enum_dispatch(TT)]
+// #[derive(Debug, bevy_reflect::Reflect, strum::EnumDiscriminants, Clone)]
+// #[strum_discriminants(
+//     derive(Reflect, Hash, strum_macros::EnumIter),
+//     reflect(Debug, Hash, PartialEq),
+//     vis(pub)
+// )]
+// pub enum TEnum {
+//     A,
+//     B,
+// }
+// impl Tech {
+//     pub fn clone_to_enum(&self, discriminant: TEnumDiscriminants) -> TechEnum {
+//         match discriminant {
+//             TEnumDiscriminants::A => TechEnum::A(self.a.clone()),
+//             TEnumDiscriminants::B => TechEnum::B(self.b.clone()),
+//         }
+//     }
+//     pub fn to_trait(&self, discriminant: TEnumDiscriminants) -> &dyn TT {
+//         match discriminant {
+//             TEnumDiscriminants::A => &self.a,
+//             TEnumDiscriminants::B => &self.b,
+//         }
+//     }
+//     pub fn to_trait_mut(&mut self, discriminant: TEnumDiscriminants) -> &mut dyn TT {
+//         match discriminant {
+//             TEnumDiscriminants::A => &mut self.a,
+//             TEnumDiscriminants::B => &mut self.b,
+//         }
+//     }
+// }

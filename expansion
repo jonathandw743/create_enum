@@ -1,0 +1,1761 @@
+#![feature(prelude_import)]
+#[prelude_import]
+use std::prelude::rust_2024::*;
+#[macro_use]
+extern crate std;
+use bevy_reflect::Reflect;
+use enum_dispatch::enum_dispatch;
+use create_enum::create_enum;
+#[strum_discriminants(
+    derive(bevy_reflect::Reflect, Hash, strum::EnumIter),
+    reflect(Debug, Hash, PartialEq),
+    vis(pub)
+)]
+pub enum TEnum {
+    A(A),
+    B(B),
+}
+#[automatically_derived]
+impl ::core::fmt::Debug for TEnum {
+    #[inline]
+    fn fmt(&self, f: &mut ::core::fmt::Formatter) -> ::core::fmt::Result {
+        match self {
+            TEnum::A(__self_0) => {
+                ::core::fmt::Formatter::debug_tuple_field1_finish(f, "A", &__self_0)
+            }
+            TEnum::B(__self_0) => {
+                ::core::fmt::Formatter::debug_tuple_field1_finish(f, "B", &__self_0)
+            }
+        }
+    }
+}
+const _: () = {
+    #[allow(unused_mut)]
+    impl bevy_reflect::GetTypeRegistration for TEnum
+    where
+        TEnum: ::core::any::Any + ::core::marker::Send + ::core::marker::Sync,
+        A: bevy_reflect::FromReflect + bevy_reflect::TypePath + bevy_reflect::MaybeTyped
+            + bevy_reflect::__macro_exports::RegisterForReflection,
+        B: bevy_reflect::FromReflect + bevy_reflect::TypePath + bevy_reflect::MaybeTyped
+            + bevy_reflect::__macro_exports::RegisterForReflection,
+    {
+        fn get_type_registration() -> bevy_reflect::TypeRegistration {
+            let mut registration = bevy_reflect::TypeRegistration::of::<Self>();
+            registration
+                .insert::<
+                    bevy_reflect::ReflectFromPtr,
+                >(bevy_reflect::FromType::<Self>::from_type());
+            registration
+                .insert::<
+                    bevy_reflect::ReflectFromReflect,
+                >(bevy_reflect::FromType::<Self>::from_type());
+            registration
+        }
+        #[inline(never)]
+        fn register_type_dependencies(registry: &mut bevy_reflect::TypeRegistry) {
+            <A as bevy_reflect::__macro_exports::RegisterForReflection>::__register(
+                registry,
+            );
+            <B as bevy_reflect::__macro_exports::RegisterForReflection>::__register(
+                registry,
+            );
+        }
+    }
+    impl bevy_reflect::Typed for TEnum
+    where
+        TEnum: ::core::any::Any + ::core::marker::Send + ::core::marker::Sync,
+        A: bevy_reflect::FromReflect + bevy_reflect::TypePath + bevy_reflect::MaybeTyped
+            + bevy_reflect::__macro_exports::RegisterForReflection,
+        B: bevy_reflect::FromReflect + bevy_reflect::TypePath + bevy_reflect::MaybeTyped
+            + bevy_reflect::__macro_exports::RegisterForReflection,
+    {
+        #[inline]
+        fn type_info() -> &'static bevy_reflect::TypeInfo {
+            static CELL: bevy_reflect::utility::NonGenericTypeInfoCell = bevy_reflect::utility::NonGenericTypeInfoCell::new();
+            CELL.get_or_set(|| {
+                bevy_reflect::TypeInfo::Enum(
+                    bevy_reflect::EnumInfo::new::<
+                        Self,
+                    >(
+                            &[
+                                bevy_reflect::VariantInfo::Tuple(
+                                    bevy_reflect::TupleVariantInfo::new(
+                                            "A",
+                                            &[
+                                                bevy_reflect::UnnamedField::new::<A>(0usize)
+                                                    .with_custom_attributes(
+                                                        bevy_reflect::attributes::CustomAttributes::default(),
+                                                    ),
+                                            ],
+                                        )
+                                        .with_custom_attributes(
+                                            bevy_reflect::attributes::CustomAttributes::default(),
+                                        ),
+                                ),
+                                bevy_reflect::VariantInfo::Tuple(
+                                    bevy_reflect::TupleVariantInfo::new(
+                                            "B",
+                                            &[
+                                                bevy_reflect::UnnamedField::new::<B>(0usize)
+                                                    .with_custom_attributes(
+                                                        bevy_reflect::attributes::CustomAttributes::default(),
+                                                    ),
+                                            ],
+                                        )
+                                        .with_custom_attributes(
+                                            bevy_reflect::attributes::CustomAttributes::default(),
+                                        ),
+                                ),
+                            ],
+                        )
+                        .with_custom_attributes(
+                            bevy_reflect::attributes::CustomAttributes::default(),
+                        ),
+                )
+            })
+        }
+    }
+    impl bevy_reflect::TypePath for TEnum
+    where
+        TEnum: ::core::any::Any + ::core::marker::Send + ::core::marker::Sync,
+    {
+        fn type_path() -> &'static str {
+            "macro_tests::TEnum"
+        }
+        fn short_type_path() -> &'static str {
+            "TEnum"
+        }
+        fn type_ident() -> Option<&'static str> {
+            ::core::option::Option::Some("TEnum")
+        }
+        fn crate_name() -> Option<&'static str> {
+            ::core::option::Option::Some("macro_tests".split(':').next().unwrap())
+        }
+        fn module_path() -> Option<&'static str> {
+            ::core::option::Option::Some("macro_tests")
+        }
+    }
+    impl bevy_reflect::Reflect for TEnum
+    where
+        TEnum: ::core::any::Any + ::core::marker::Send + ::core::marker::Sync,
+        A: bevy_reflect::FromReflect + bevy_reflect::TypePath + bevy_reflect::MaybeTyped
+            + bevy_reflect::__macro_exports::RegisterForReflection,
+        B: bevy_reflect::FromReflect + bevy_reflect::TypePath + bevy_reflect::MaybeTyped
+            + bevy_reflect::__macro_exports::RegisterForReflection,
+    {
+        #[inline]
+        fn into_any(
+            self: ::std::boxed::Box<Self>,
+        ) -> ::std::boxed::Box<dyn ::core::any::Any> {
+            self
+        }
+        #[inline]
+        fn as_any(&self) -> &dyn ::core::any::Any {
+            self
+        }
+        #[inline]
+        fn as_any_mut(&mut self) -> &mut dyn ::core::any::Any {
+            self
+        }
+        #[inline]
+        fn into_reflect(
+            self: ::std::boxed::Box<Self>,
+        ) -> ::std::boxed::Box<dyn bevy_reflect::Reflect> {
+            self
+        }
+        #[inline]
+        fn as_reflect(&self) -> &dyn bevy_reflect::Reflect {
+            self
+        }
+        #[inline]
+        fn as_reflect_mut(&mut self) -> &mut dyn bevy_reflect::Reflect {
+            self
+        }
+        #[inline]
+        fn set(
+            &mut self,
+            value: ::std::boxed::Box<dyn bevy_reflect::Reflect>,
+        ) -> ::core::result::Result<(), ::std::boxed::Box<dyn bevy_reflect::Reflect>> {
+            *self = <dyn bevy_reflect::Reflect>::take(value)?;
+            ::core::result::Result::Ok(())
+        }
+    }
+    impl bevy_reflect::Enum for TEnum
+    where
+        TEnum: ::core::any::Any + ::core::marker::Send + ::core::marker::Sync,
+        A: bevy_reflect::FromReflect + bevy_reflect::TypePath + bevy_reflect::MaybeTyped
+            + bevy_reflect::__macro_exports::RegisterForReflection,
+        B: bevy_reflect::FromReflect + bevy_reflect::TypePath + bevy_reflect::MaybeTyped
+            + bevy_reflect::__macro_exports::RegisterForReflection,
+    {
+        fn field(
+            &self,
+            __name_param: &str,
+        ) -> ::core::option::Option<&dyn bevy_reflect::PartialReflect> {
+            match self {
+                _ => ::core::option::Option::None,
+            }
+        }
+        fn field_at(
+            &self,
+            __index_param: usize,
+        ) -> ::core::option::Option<&dyn bevy_reflect::PartialReflect> {
+            match self {
+                TEnum::A { 0: __value, .. } if __index_param == 0usize => {
+                    ::core::option::Option::Some(__value)
+                }
+                TEnum::B { 0: __value, .. } if __index_param == 0usize => {
+                    ::core::option::Option::Some(__value)
+                }
+                _ => ::core::option::Option::None,
+            }
+        }
+        fn field_mut(
+            &mut self,
+            __name_param: &str,
+        ) -> ::core::option::Option<&mut dyn bevy_reflect::PartialReflect> {
+            match self {
+                _ => ::core::option::Option::None,
+            }
+        }
+        fn field_at_mut(
+            &mut self,
+            __index_param: usize,
+        ) -> ::core::option::Option<&mut dyn bevy_reflect::PartialReflect> {
+            match self {
+                TEnum::A { 0: __value, .. } if __index_param == 0usize => {
+                    ::core::option::Option::Some(__value)
+                }
+                TEnum::B { 0: __value, .. } if __index_param == 0usize => {
+                    ::core::option::Option::Some(__value)
+                }
+                _ => ::core::option::Option::None,
+            }
+        }
+        fn index_of(&self, __name_param: &str) -> ::core::option::Option<usize> {
+            match self {
+                _ => ::core::option::Option::None,
+            }
+        }
+        fn name_at(&self, __index_param: usize) -> ::core::option::Option<&str> {
+            match self {
+                _ => ::core::option::Option::None,
+            }
+        }
+        fn iter_fields(&self) -> bevy_reflect::VariantFieldIter {
+            bevy_reflect::VariantFieldIter::new(self)
+        }
+        #[inline]
+        fn field_len(&self) -> usize {
+            match self {
+                TEnum::A { .. } => 1usize,
+                TEnum::B { .. } => 1usize,
+                _ => 0,
+            }
+        }
+        #[inline]
+        fn variant_name(&self) -> &str {
+            match self {
+                TEnum::A { .. } => "A",
+                TEnum::B { .. } => "B",
+                _ => ::core::panicking::panic("internal error: entered unreachable code"),
+            }
+        }
+        #[inline]
+        fn variant_index(&self) -> usize {
+            match self {
+                TEnum::A { .. } => 0usize,
+                TEnum::B { .. } => 1usize,
+                _ => ::core::panicking::panic("internal error: entered unreachable code"),
+            }
+        }
+        #[inline]
+        fn variant_type(&self) -> bevy_reflect::VariantType {
+            match self {
+                TEnum::A { .. } => bevy_reflect::VariantType::Tuple,
+                TEnum::B { .. } => bevy_reflect::VariantType::Tuple,
+                _ => ::core::panicking::panic("internal error: entered unreachable code"),
+            }
+        }
+        fn clone_dynamic(&self) -> bevy_reflect::DynamicEnum {
+            bevy_reflect::DynamicEnum::from_ref::<Self>(self)
+        }
+    }
+    impl bevy_reflect::PartialReflect for TEnum
+    where
+        TEnum: ::core::any::Any + ::core::marker::Send + ::core::marker::Sync,
+        A: bevy_reflect::FromReflect + bevy_reflect::TypePath + bevy_reflect::MaybeTyped
+            + bevy_reflect::__macro_exports::RegisterForReflection,
+        B: bevy_reflect::FromReflect + bevy_reflect::TypePath + bevy_reflect::MaybeTyped
+            + bevy_reflect::__macro_exports::RegisterForReflection,
+    {
+        #[inline]
+        fn get_represented_type_info(
+            &self,
+        ) -> ::core::option::Option<&'static bevy_reflect::TypeInfo> {
+            ::core::option::Option::Some(<Self as bevy_reflect::Typed>::type_info())
+        }
+        #[inline]
+        fn clone_value(&self) -> ::std::boxed::Box<dyn bevy_reflect::PartialReflect> {
+            ::std::boxed::Box::new(bevy_reflect::Enum::clone_dynamic(self))
+        }
+        #[inline]
+        fn try_apply(
+            &mut self,
+            __value_param: &dyn bevy_reflect::PartialReflect,
+        ) -> ::core::result::Result<(), bevy_reflect::ApplyError> {
+            if let bevy_reflect::ReflectRef::Enum(__value_param) = bevy_reflect::PartialReflect::reflect_ref(
+                __value_param,
+            ) {
+                if bevy_reflect::Enum::variant_name(self)
+                    == bevy_reflect::Enum::variant_name(__value_param)
+                {
+                    match bevy_reflect::Enum::variant_type(__value_param) {
+                        bevy_reflect::VariantType::Struct => {
+                            for field in bevy_reflect::Enum::iter_fields(__value_param) {
+                                let name = field.name().unwrap();
+                                if let ::core::option::Option::Some(v) = bevy_reflect::Enum::field_mut(
+                                    self,
+                                    name,
+                                ) {
+                                    bevy_reflect::PartialReflect::try_apply(v, field.value())?;
+                                }
+                            }
+                        }
+                        bevy_reflect::VariantType::Tuple => {
+                            for (index, field) in ::core::iter::Iterator::enumerate(
+                                bevy_reflect::Enum::iter_fields(__value_param),
+                            ) {
+                                if let ::core::option::Option::Some(v) = bevy_reflect::Enum::field_at_mut(
+                                    self,
+                                    index,
+                                ) {
+                                    bevy_reflect::PartialReflect::try_apply(v, field.value())?;
+                                }
+                            }
+                        }
+                        _ => {}
+                    }
+                } else {
+                    match bevy_reflect::Enum::variant_name(__value_param) {
+                        "A" => {
+                            *self = TEnum::A {
+                                0: {
+                                    let _0 = __value_param.field_at(0usize);
+                                    let _0 = _0
+                                        .ok_or(bevy_reflect::ApplyError::MissingEnumField {
+                                            variant_name: ::core::convert::Into::into("A"),
+                                            field_name: ::core::convert::Into::into(".0"),
+                                        })?;
+                                    <A as bevy_reflect::FromReflect>::from_reflect(_0)
+                                        .ok_or(bevy_reflect::ApplyError::MismatchedTypes {
+                                            from_type: ::core::convert::Into::into(
+                                                bevy_reflect::DynamicTypePath::reflect_type_path(_0),
+                                            ),
+                                            to_type: ::core::convert::Into::into(
+                                                <A as bevy_reflect::TypePath>::type_path(),
+                                            ),
+                                        })?
+                                },
+                            };
+                        }
+                        "B" => {
+                            *self = TEnum::B {
+                                0: {
+                                    let _0 = __value_param.field_at(0usize);
+                                    let _0 = _0
+                                        .ok_or(bevy_reflect::ApplyError::MissingEnumField {
+                                            variant_name: ::core::convert::Into::into("B"),
+                                            field_name: ::core::convert::Into::into(".0"),
+                                        })?;
+                                    <B as bevy_reflect::FromReflect>::from_reflect(_0)
+                                        .ok_or(bevy_reflect::ApplyError::MismatchedTypes {
+                                            from_type: ::core::convert::Into::into(
+                                                bevy_reflect::DynamicTypePath::reflect_type_path(_0),
+                                            ),
+                                            to_type: ::core::convert::Into::into(
+                                                <B as bevy_reflect::TypePath>::type_path(),
+                                            ),
+                                        })?
+                                },
+                            };
+                        }
+                        name => {
+                            return ::core::result::Result::Err(bevy_reflect::ApplyError::UnknownVariant {
+                                enum_name: ::core::convert::Into::into(
+                                    bevy_reflect::DynamicTypePath::reflect_type_path(self),
+                                ),
+                                variant_name: ::core::convert::Into::into(name),
+                            });
+                        }
+                    }
+                }
+            } else {
+                return ::core::result::Result::Err(bevy_reflect::ApplyError::MismatchedKinds {
+                    from_kind: bevy_reflect::PartialReflect::reflect_kind(__value_param),
+                    to_kind: bevy_reflect::ReflectKind::Enum,
+                });
+            }
+            ::core::result::Result::Ok(())
+        }
+        fn reflect_kind(&self) -> bevy_reflect::ReflectKind {
+            bevy_reflect::ReflectKind::Enum
+        }
+        fn reflect_ref(&self) -> bevy_reflect::ReflectRef {
+            bevy_reflect::ReflectRef::Enum(self)
+        }
+        fn reflect_mut(&mut self) -> bevy_reflect::ReflectMut {
+            bevy_reflect::ReflectMut::Enum(self)
+        }
+        fn reflect_owned(self: ::std::boxed::Box<Self>) -> bevy_reflect::ReflectOwned {
+            bevy_reflect::ReflectOwned::Enum(self)
+        }
+        #[inline]
+        fn try_into_reflect(
+            self: ::std::boxed::Box<Self>,
+        ) -> ::core::result::Result<
+            ::std::boxed::Box<dyn bevy_reflect::Reflect>,
+            ::std::boxed::Box<dyn bevy_reflect::PartialReflect>,
+        > {
+            ::core::result::Result::Ok(self)
+        }
+        #[inline]
+        fn try_as_reflect(&self) -> ::core::option::Option<&dyn bevy_reflect::Reflect> {
+            ::core::option::Option::Some(self)
+        }
+        #[inline]
+        fn try_as_reflect_mut(
+            &mut self,
+        ) -> ::core::option::Option<&mut dyn bevy_reflect::Reflect> {
+            ::core::option::Option::Some(self)
+        }
+        #[inline]
+        fn into_partial_reflect(
+            self: ::std::boxed::Box<Self>,
+        ) -> ::std::boxed::Box<dyn bevy_reflect::PartialReflect> {
+            self
+        }
+        #[inline]
+        fn as_partial_reflect(&self) -> &dyn bevy_reflect::PartialReflect {
+            self
+        }
+        #[inline]
+        fn as_partial_reflect_mut(&mut self) -> &mut dyn bevy_reflect::PartialReflect {
+            self
+        }
+        fn reflect_hash(&self) -> ::core::option::Option<u64> {
+            (bevy_reflect::enum_hash)(self)
+        }
+        fn reflect_partial_eq(
+            &self,
+            value: &dyn bevy_reflect::PartialReflect,
+        ) -> ::core::option::Option<bool> {
+            (bevy_reflect::enum_partial_eq)(self, value)
+        }
+    }
+    impl bevy_reflect::FromReflect for TEnum
+    where
+        TEnum: ::core::any::Any + ::core::marker::Send + ::core::marker::Sync,
+        A: bevy_reflect::FromReflect + bevy_reflect::TypePath + bevy_reflect::MaybeTyped
+            + bevy_reflect::__macro_exports::RegisterForReflection,
+        B: bevy_reflect::FromReflect + bevy_reflect::TypePath + bevy_reflect::MaybeTyped
+            + bevy_reflect::__macro_exports::RegisterForReflection,
+    {
+        fn from_reflect(
+            __param0: &dyn bevy_reflect::PartialReflect,
+        ) -> ::core::option::Option<Self> {
+            if let bevy_reflect::ReflectRef::Enum(__param0) = bevy_reflect::PartialReflect::reflect_ref(
+                __param0,
+            ) {
+                match bevy_reflect::Enum::variant_name(__param0) {
+                    "A" => {
+                        ::core::option::Option::Some(TEnum::A {
+                            0: {
+                                let _0 = __param0.field_at(0usize);
+                                let _0 = _0?;
+                                <A as bevy_reflect::FromReflect>::from_reflect(_0)?
+                            },
+                        })
+                    }
+                    "B" => {
+                        ::core::option::Option::Some(TEnum::B {
+                            0: {
+                                let _0 = __param0.field_at(0usize);
+                                let _0 = _0?;
+                                <B as bevy_reflect::FromReflect>::from_reflect(_0)?
+                            },
+                        })
+                    }
+                    name => {
+                        ::core::panicking::panic_fmt(
+                            format_args!(
+                                "variant with name `{0}` does not exist on enum `{1}`",
+                                name,
+                                <Self as bevy_reflect::TypePath>::type_path(),
+                            ),
+                        );
+                    }
+                }
+            } else {
+                ::core::option::Option::None
+            }
+        }
+    }
+};
+/// Auto-generated discriminant enum variants
+#[reflect(Debug, Hash, PartialEq)]
+pub enum TEnumDiscriminants {
+    A,
+    B,
+}
+#[automatically_derived]
+impl ::core::clone::Clone for TEnumDiscriminants {
+    #[inline]
+    fn clone(&self) -> TEnumDiscriminants {
+        *self
+    }
+}
+#[automatically_derived]
+impl ::core::marker::Copy for TEnumDiscriminants {}
+#[automatically_derived]
+impl ::core::fmt::Debug for TEnumDiscriminants {
+    #[inline]
+    fn fmt(&self, f: &mut ::core::fmt::Formatter) -> ::core::fmt::Result {
+        ::core::fmt::Formatter::write_str(
+            f,
+            match self {
+                TEnumDiscriminants::A => "A",
+                TEnumDiscriminants::B => "B",
+            },
+        )
+    }
+}
+#[automatically_derived]
+impl ::core::marker::StructuralPartialEq for TEnumDiscriminants {}
+#[automatically_derived]
+impl ::core::cmp::PartialEq for TEnumDiscriminants {
+    #[inline]
+    fn eq(&self, other: &TEnumDiscriminants) -> bool {
+        let __self_discr = ::core::intrinsics::discriminant_value(self);
+        let __arg1_discr = ::core::intrinsics::discriminant_value(other);
+        __self_discr == __arg1_discr
+    }
+}
+#[automatically_derived]
+impl ::core::cmp::Eq for TEnumDiscriminants {
+    #[inline]
+    #[doc(hidden)]
+    #[coverage(off)]
+    fn assert_receiver_is_total_eq(&self) -> () {}
+}
+const _: () = {
+    #[allow(unused_mut)]
+    impl bevy_reflect::GetTypeRegistration for TEnumDiscriminants
+    where
+        TEnumDiscriminants: ::core::any::Any + ::core::marker::Send
+            + ::core::marker::Sync,
+    {
+        fn get_type_registration() -> bevy_reflect::TypeRegistration {
+            let mut registration = bevy_reflect::TypeRegistration::of::<Self>();
+            registration
+                .insert::<
+                    bevy_reflect::ReflectFromPtr,
+                >(bevy_reflect::FromType::<Self>::from_type());
+            registration
+                .insert::<
+                    bevy_reflect::ReflectFromReflect,
+                >(bevy_reflect::FromType::<Self>::from_type());
+            registration
+        }
+        #[inline(never)]
+        fn register_type_dependencies(registry: &mut bevy_reflect::TypeRegistry) {}
+    }
+    impl bevy_reflect::Typed for TEnumDiscriminants
+    where
+        TEnumDiscriminants: ::core::any::Any + ::core::marker::Send
+            + ::core::marker::Sync,
+    {
+        #[inline]
+        fn type_info() -> &'static bevy_reflect::TypeInfo {
+            static CELL: bevy_reflect::utility::NonGenericTypeInfoCell = bevy_reflect::utility::NonGenericTypeInfoCell::new();
+            CELL.get_or_set(|| {
+                bevy_reflect::TypeInfo::Enum(
+                    bevy_reflect::EnumInfo::new::<
+                        Self,
+                    >(
+                            &[
+                                bevy_reflect::VariantInfo::Unit(
+                                    bevy_reflect::UnitVariantInfo::new("A")
+                                        .with_custom_attributes(
+                                            bevy_reflect::attributes::CustomAttributes::default(),
+                                        ),
+                                ),
+                                bevy_reflect::VariantInfo::Unit(
+                                    bevy_reflect::UnitVariantInfo::new("B")
+                                        .with_custom_attributes(
+                                            bevy_reflect::attributes::CustomAttributes::default(),
+                                        ),
+                                ),
+                            ],
+                        )
+                        .with_custom_attributes(
+                            bevy_reflect::attributes::CustomAttributes::default(),
+                        ),
+                )
+            })
+        }
+    }
+    impl bevy_reflect::TypePath for TEnumDiscriminants
+    where
+        TEnumDiscriminants: ::core::any::Any + ::core::marker::Send
+            + ::core::marker::Sync,
+    {
+        fn type_path() -> &'static str {
+            "macro_tests::TEnumDiscriminants"
+        }
+        fn short_type_path() -> &'static str {
+            "TEnumDiscriminants"
+        }
+        fn type_ident() -> Option<&'static str> {
+            ::core::option::Option::Some("TEnumDiscriminants")
+        }
+        fn crate_name() -> Option<&'static str> {
+            ::core::option::Option::Some("macro_tests".split(':').next().unwrap())
+        }
+        fn module_path() -> Option<&'static str> {
+            ::core::option::Option::Some("macro_tests")
+        }
+    }
+    impl bevy_reflect::Reflect for TEnumDiscriminants
+    where
+        TEnumDiscriminants: ::core::any::Any + ::core::marker::Send
+            + ::core::marker::Sync,
+    {
+        #[inline]
+        fn into_any(
+            self: ::std::boxed::Box<Self>,
+        ) -> ::std::boxed::Box<dyn ::core::any::Any> {
+            self
+        }
+        #[inline]
+        fn as_any(&self) -> &dyn ::core::any::Any {
+            self
+        }
+        #[inline]
+        fn as_any_mut(&mut self) -> &mut dyn ::core::any::Any {
+            self
+        }
+        #[inline]
+        fn into_reflect(
+            self: ::std::boxed::Box<Self>,
+        ) -> ::std::boxed::Box<dyn bevy_reflect::Reflect> {
+            self
+        }
+        #[inline]
+        fn as_reflect(&self) -> &dyn bevy_reflect::Reflect {
+            self
+        }
+        #[inline]
+        fn as_reflect_mut(&mut self) -> &mut dyn bevy_reflect::Reflect {
+            self
+        }
+        #[inline]
+        fn set(
+            &mut self,
+            value: ::std::boxed::Box<dyn bevy_reflect::Reflect>,
+        ) -> ::core::result::Result<(), ::std::boxed::Box<dyn bevy_reflect::Reflect>> {
+            *self = <dyn bevy_reflect::Reflect>::take(value)?;
+            ::core::result::Result::Ok(())
+        }
+    }
+    impl bevy_reflect::Enum for TEnumDiscriminants
+    where
+        TEnumDiscriminants: ::core::any::Any + ::core::marker::Send
+            + ::core::marker::Sync,
+    {
+        fn field(
+            &self,
+            __name_param: &str,
+        ) -> ::core::option::Option<&dyn bevy_reflect::PartialReflect> {
+            match self {
+                _ => ::core::option::Option::None,
+            }
+        }
+        fn field_at(
+            &self,
+            __index_param: usize,
+        ) -> ::core::option::Option<&dyn bevy_reflect::PartialReflect> {
+            match self {
+                _ => ::core::option::Option::None,
+            }
+        }
+        fn field_mut(
+            &mut self,
+            __name_param: &str,
+        ) -> ::core::option::Option<&mut dyn bevy_reflect::PartialReflect> {
+            match self {
+                _ => ::core::option::Option::None,
+            }
+        }
+        fn field_at_mut(
+            &mut self,
+            __index_param: usize,
+        ) -> ::core::option::Option<&mut dyn bevy_reflect::PartialReflect> {
+            match self {
+                _ => ::core::option::Option::None,
+            }
+        }
+        fn index_of(&self, __name_param: &str) -> ::core::option::Option<usize> {
+            match self {
+                _ => ::core::option::Option::None,
+            }
+        }
+        fn name_at(&self, __index_param: usize) -> ::core::option::Option<&str> {
+            match self {
+                _ => ::core::option::Option::None,
+            }
+        }
+        fn iter_fields(&self) -> bevy_reflect::VariantFieldIter {
+            bevy_reflect::VariantFieldIter::new(self)
+        }
+        #[inline]
+        fn field_len(&self) -> usize {
+            match self {
+                TEnumDiscriminants::A { .. } => 0usize,
+                TEnumDiscriminants::B { .. } => 0usize,
+                _ => 0,
+            }
+        }
+        #[inline]
+        fn variant_name(&self) -> &str {
+            match self {
+                TEnumDiscriminants::A { .. } => "A",
+                TEnumDiscriminants::B { .. } => "B",
+                _ => ::core::panicking::panic("internal error: entered unreachable code"),
+            }
+        }
+        #[inline]
+        fn variant_index(&self) -> usize {
+            match self {
+                TEnumDiscriminants::A { .. } => 0usize,
+                TEnumDiscriminants::B { .. } => 1usize,
+                _ => ::core::panicking::panic("internal error: entered unreachable code"),
+            }
+        }
+        #[inline]
+        fn variant_type(&self) -> bevy_reflect::VariantType {
+            match self {
+                TEnumDiscriminants::A { .. } => bevy_reflect::VariantType::Unit,
+                TEnumDiscriminants::B { .. } => bevy_reflect::VariantType::Unit,
+                _ => ::core::panicking::panic("internal error: entered unreachable code"),
+            }
+        }
+        fn clone_dynamic(&self) -> bevy_reflect::DynamicEnum {
+            bevy_reflect::DynamicEnum::from_ref::<Self>(self)
+        }
+    }
+    impl bevy_reflect::PartialReflect for TEnumDiscriminants
+    where
+        TEnumDiscriminants: ::core::any::Any + ::core::marker::Send
+            + ::core::marker::Sync,
+    {
+        #[inline]
+        fn get_represented_type_info(
+            &self,
+        ) -> ::core::option::Option<&'static bevy_reflect::TypeInfo> {
+            ::core::option::Option::Some(<Self as bevy_reflect::Typed>::type_info())
+        }
+        #[inline]
+        fn clone_value(&self) -> ::std::boxed::Box<dyn bevy_reflect::PartialReflect> {
+            ::std::boxed::Box::new(bevy_reflect::Enum::clone_dynamic(self))
+        }
+        #[inline]
+        fn try_apply(
+            &mut self,
+            __value_param: &dyn bevy_reflect::PartialReflect,
+        ) -> ::core::result::Result<(), bevy_reflect::ApplyError> {
+            if let bevy_reflect::ReflectRef::Enum(__value_param) = bevy_reflect::PartialReflect::reflect_ref(
+                __value_param,
+            ) {
+                if bevy_reflect::Enum::variant_name(self)
+                    == bevy_reflect::Enum::variant_name(__value_param)
+                {
+                    match bevy_reflect::Enum::variant_type(__value_param) {
+                        bevy_reflect::VariantType::Struct => {
+                            for field in bevy_reflect::Enum::iter_fields(__value_param) {
+                                let name = field.name().unwrap();
+                                if let ::core::option::Option::Some(v) = bevy_reflect::Enum::field_mut(
+                                    self,
+                                    name,
+                                ) {
+                                    bevy_reflect::PartialReflect::try_apply(v, field.value())?;
+                                }
+                            }
+                        }
+                        bevy_reflect::VariantType::Tuple => {
+                            for (index, field) in ::core::iter::Iterator::enumerate(
+                                bevy_reflect::Enum::iter_fields(__value_param),
+                            ) {
+                                if let ::core::option::Option::Some(v) = bevy_reflect::Enum::field_at_mut(
+                                    self,
+                                    index,
+                                ) {
+                                    bevy_reflect::PartialReflect::try_apply(v, field.value())?;
+                                }
+                            }
+                        }
+                        _ => {}
+                    }
+                } else {
+                    match bevy_reflect::Enum::variant_name(__value_param) {
+                        "A" => *self = TEnumDiscriminants::A {},
+                        "B" => *self = TEnumDiscriminants::B {},
+                        name => {
+                            return ::core::result::Result::Err(bevy_reflect::ApplyError::UnknownVariant {
+                                enum_name: ::core::convert::Into::into(
+                                    bevy_reflect::DynamicTypePath::reflect_type_path(self),
+                                ),
+                                variant_name: ::core::convert::Into::into(name),
+                            });
+                        }
+                    }
+                }
+            } else {
+                return ::core::result::Result::Err(bevy_reflect::ApplyError::MismatchedKinds {
+                    from_kind: bevy_reflect::PartialReflect::reflect_kind(__value_param),
+                    to_kind: bevy_reflect::ReflectKind::Enum,
+                });
+            }
+            ::core::result::Result::Ok(())
+        }
+        fn reflect_kind(&self) -> bevy_reflect::ReflectKind {
+            bevy_reflect::ReflectKind::Enum
+        }
+        fn reflect_ref(&self) -> bevy_reflect::ReflectRef {
+            bevy_reflect::ReflectRef::Enum(self)
+        }
+        fn reflect_mut(&mut self) -> bevy_reflect::ReflectMut {
+            bevy_reflect::ReflectMut::Enum(self)
+        }
+        fn reflect_owned(self: ::std::boxed::Box<Self>) -> bevy_reflect::ReflectOwned {
+            bevy_reflect::ReflectOwned::Enum(self)
+        }
+        #[inline]
+        fn try_into_reflect(
+            self: ::std::boxed::Box<Self>,
+        ) -> ::core::result::Result<
+            ::std::boxed::Box<dyn bevy_reflect::Reflect>,
+            ::std::boxed::Box<dyn bevy_reflect::PartialReflect>,
+        > {
+            ::core::result::Result::Ok(self)
+        }
+        #[inline]
+        fn try_as_reflect(&self) -> ::core::option::Option<&dyn bevy_reflect::Reflect> {
+            ::core::option::Option::Some(self)
+        }
+        #[inline]
+        fn try_as_reflect_mut(
+            &mut self,
+        ) -> ::core::option::Option<&mut dyn bevy_reflect::Reflect> {
+            ::core::option::Option::Some(self)
+        }
+        #[inline]
+        fn into_partial_reflect(
+            self: ::std::boxed::Box<Self>,
+        ) -> ::std::boxed::Box<dyn bevy_reflect::PartialReflect> {
+            self
+        }
+        #[inline]
+        fn as_partial_reflect(&self) -> &dyn bevy_reflect::PartialReflect {
+            self
+        }
+        #[inline]
+        fn as_partial_reflect_mut(&mut self) -> &mut dyn bevy_reflect::PartialReflect {
+            self
+        }
+        fn reflect_hash(&self) -> ::core::option::Option<u64> {
+            use ::core::hash::{Hash, Hasher};
+            let mut hasher = bevy_reflect::utility::reflect_hasher();
+            Hash::hash(&::core::any::Any::type_id(self), &mut hasher);
+            Hash::hash(self, &mut hasher);
+            ::core::option::Option::Some(Hasher::finish(&hasher))
+        }
+        fn reflect_partial_eq(
+            &self,
+            value: &dyn bevy_reflect::PartialReflect,
+        ) -> ::core::option::Option<bool> {
+            let value = <dyn bevy_reflect::PartialReflect>::try_downcast_ref::<
+                Self,
+            >(value);
+            if let ::core::option::Option::Some(value) = value {
+                ::core::option::Option::Some(::core::cmp::PartialEq::eq(self, value))
+            } else {
+                ::core::option::Option::Some(false)
+            }
+        }
+        fn debug(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+            ::core::fmt::Debug::fmt(self, f)
+        }
+    }
+    impl bevy_reflect::FromReflect for TEnumDiscriminants
+    where
+        TEnumDiscriminants: ::core::any::Any + ::core::marker::Send
+            + ::core::marker::Sync,
+    {
+        fn from_reflect(
+            __param0: &dyn bevy_reflect::PartialReflect,
+        ) -> ::core::option::Option<Self> {
+            if let bevy_reflect::ReflectRef::Enum(__param0) = bevy_reflect::PartialReflect::reflect_ref(
+                __param0,
+            ) {
+                match bevy_reflect::Enum::variant_name(__param0) {
+                    "A" => ::core::option::Option::Some(TEnumDiscriminants::A {}),
+                    "B" => ::core::option::Option::Some(TEnumDiscriminants::B {}),
+                    name => {
+                        ::core::panicking::panic_fmt(
+                            format_args!(
+                                "variant with name `{0}` does not exist on enum `{1}`",
+                                name,
+                                <Self as bevy_reflect::TypePath>::type_path(),
+                            ),
+                        );
+                    }
+                }
+            } else {
+                ::core::option::Option::None
+            }
+        }
+    }
+};
+#[automatically_derived]
+impl ::core::hash::Hash for TEnumDiscriminants {
+    #[inline]
+    fn hash<__H: ::core::hash::Hasher>(&self, state: &mut __H) -> () {
+        let __self_discr = ::core::intrinsics::discriminant_value(self);
+        ::core::hash::Hash::hash(&__self_discr, state)
+    }
+}
+///An iterator over the variants of [TEnumDiscriminants]
+#[allow(missing_copy_implementations)]
+pub struct TEnumDiscriminantsIter {
+    idx: usize,
+    back_idx: usize,
+    marker: ::core::marker::PhantomData<fn() -> ()>,
+}
+impl ::core::fmt::Debug for TEnumDiscriminantsIter {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("TEnumDiscriminantsIter").field("len", &self.len()).finish()
+    }
+}
+impl TEnumDiscriminantsIter {
+    fn get(&self, idx: usize) -> ::core::option::Option<TEnumDiscriminants> {
+        match idx {
+            0usize => ::core::option::Option::Some(TEnumDiscriminants::A),
+            1usize => ::core::option::Option::Some(TEnumDiscriminants::B),
+            _ => ::core::option::Option::None,
+        }
+    }
+}
+impl ::strum::IntoEnumIterator for TEnumDiscriminants {
+    type Iterator = TEnumDiscriminantsIter;
+    #[inline]
+    fn iter() -> TEnumDiscriminantsIter {
+        TEnumDiscriminantsIter {
+            idx: 0,
+            back_idx: 0,
+            marker: ::core::marker::PhantomData,
+        }
+    }
+}
+impl Iterator for TEnumDiscriminantsIter {
+    type Item = TEnumDiscriminants;
+    #[inline]
+    fn next(&mut self) -> ::core::option::Option<<Self as Iterator>::Item> {
+        self.nth(0)
+    }
+    #[inline]
+    fn size_hint(&self) -> (usize, ::core::option::Option<usize>) {
+        let t = if self.idx + self.back_idx >= 2usize {
+            0
+        } else {
+            2usize - self.idx - self.back_idx
+        };
+        (t, Some(t))
+    }
+    #[inline]
+    fn nth(&mut self, n: usize) -> ::core::option::Option<<Self as Iterator>::Item> {
+        let idx = self.idx + n + 1;
+        if idx + self.back_idx > 2usize {
+            self.idx = 2usize;
+            ::core::option::Option::None
+        } else {
+            self.idx = idx;
+            TEnumDiscriminantsIter::get(self, idx - 1)
+        }
+    }
+}
+impl ExactSizeIterator for TEnumDiscriminantsIter {
+    #[inline]
+    fn len(&self) -> usize {
+        self.size_hint().0
+    }
+}
+impl DoubleEndedIterator for TEnumDiscriminantsIter {
+    #[inline]
+    fn next_back(&mut self) -> ::core::option::Option<<Self as Iterator>::Item> {
+        let back_idx = self.back_idx + 1;
+        if self.idx + back_idx > 2usize {
+            self.back_idx = 2usize;
+            ::core::option::Option::None
+        } else {
+            self.back_idx = back_idx;
+            TEnumDiscriminantsIter::get(self, 2usize - self.back_idx)
+        }
+    }
+}
+impl ::core::iter::FusedIterator for TEnumDiscriminantsIter {}
+impl Clone for TEnumDiscriminantsIter {
+    #[inline]
+    fn clone(&self) -> TEnumDiscriminantsIter {
+        TEnumDiscriminantsIter {
+            idx: self.idx,
+            back_idx: self.back_idx,
+            marker: self.marker.clone(),
+        }
+    }
+}
+impl ::strum::IntoDiscriminant for TEnum {
+    type Discriminant = TEnumDiscriminants;
+    #[inline]
+    fn discriminant(&self) -> Self::Discriminant {
+        <Self::Discriminant as ::core::convert::From<&Self>>::from(self)
+    }
+}
+impl ::core::convert::From<TEnum> for TEnumDiscriminants {
+    #[inline]
+    fn from(val: TEnum) -> TEnumDiscriminants {
+        match val {
+            TEnum::A(..) => TEnumDiscriminants::A,
+            TEnum::B(..) => TEnumDiscriminants::B,
+        }
+    }
+}
+impl<'_enum> ::core::convert::From<&'_enum TEnum> for TEnumDiscriminants {
+    #[inline]
+    fn from(val: &'_enum TEnum) -> TEnumDiscriminants {
+        match val {
+            TEnum::A(..) => TEnumDiscriminants::A,
+            TEnum::B(..) => TEnumDiscriminants::B,
+        }
+    }
+}
+#[automatically_derived]
+impl ::core::clone::Clone for TEnum {
+    #[inline]
+    fn clone(&self) -> TEnum {
+        match self {
+            TEnum::A(__self_0) => TEnum::A(::core::clone::Clone::clone(__self_0)),
+            TEnum::B(__self_0) => TEnum::B(::core::clone::Clone::clone(__self_0)),
+        }
+    }
+}
+impl T {
+    pub fn clone_to_tech(&self, tech_discriminant: TEnumDiscriminants) -> T {
+        match tech_discriminant {
+            TEnumDiscriminants::A => {
+                T {
+                    a: self.a.clone(),
+                    ..self.clone()
+                }
+            }
+            TEnumDiscriminants::B => {
+                T {
+                    b: self.b.clone(),
+                    ..self.clone()
+                }
+            }
+        }
+    }
+    pub fn to_tech_trait(&self, tech_discriminant: TEnumDiscriminants) -> &dyn TT {
+        match tech_discriminant {
+            TEnumDiscriminants::A => &self.a,
+            TEnumDiscriminants::B => &self.b,
+        }
+    }
+    pub fn to_tech_trait_mut(
+        &mut self,
+        tech_discriminant: TEnumDiscriminants,
+    ) -> &mut dyn TT {
+        match tech_discriminant {
+            TEnumDiscriminants::A => &mut self.a,
+            TEnumDiscriminants::B => &mut self.b,
+        }
+    }
+}
+trait TT {
+    fn foo(&self) -> i32;
+}
+impl ::core::convert::From<A> for TEnum {
+    fn from(v: A) -> TEnum {
+        TEnum::A(v)
+    }
+}
+impl ::core::convert::From<B> for TEnum {
+    fn from(v: B) -> TEnum {
+        TEnum::B(v)
+    }
+}
+impl ::core::convert::TryInto<A> for TEnum {
+    type Error = &'static str;
+    fn try_into(
+        self,
+    ) -> ::core::result::Result<A, <Self as ::core::convert::TryInto<A>>::Error> {
+        match self {
+            TEnum::A(v) => Ok(v),
+            TEnum::B(v) => Err("Tried to convert variant B to A"),
+        }
+    }
+}
+impl ::core::convert::TryInto<B> for TEnum {
+    type Error = &'static str;
+    fn try_into(
+        self,
+    ) -> ::core::result::Result<B, <Self as ::core::convert::TryInto<B>>::Error> {
+        match self {
+            TEnum::B(v) => Ok(v),
+            TEnum::A(v) => Err("Tried to convert variant A to B"),
+        }
+    }
+}
+impl TT for TEnum {
+    #[inline]
+    fn foo(&self) -> i32 {
+        match self {
+            TEnum::A(inner) => TT::foo(inner),
+            TEnum::B(inner) => TT::foo(inner),
+        }
+    }
+}
+struct A(i32);
+#[automatically_derived]
+impl ::core::fmt::Debug for A {
+    #[inline]
+    fn fmt(&self, f: &mut ::core::fmt::Formatter) -> ::core::fmt::Result {
+        ::core::fmt::Formatter::debug_tuple_field1_finish(f, "A", &&self.0)
+    }
+}
+const _: () = {
+    #[allow(unused_mut)]
+    impl bevy_reflect::GetTypeRegistration for A
+    where
+        A: ::core::any::Any + ::core::marker::Send + ::core::marker::Sync,
+        i32: bevy_reflect::FromReflect + bevy_reflect::TypePath
+            + bevy_reflect::MaybeTyped
+            + bevy_reflect::__macro_exports::RegisterForReflection,
+    {
+        fn get_type_registration() -> bevy_reflect::TypeRegistration {
+            let mut registration = bevy_reflect::TypeRegistration::of::<Self>();
+            registration
+                .insert::<
+                    bevy_reflect::ReflectFromPtr,
+                >(bevy_reflect::FromType::<Self>::from_type());
+            registration
+                .insert::<
+                    bevy_reflect::ReflectFromReflect,
+                >(bevy_reflect::FromType::<Self>::from_type());
+            registration
+        }
+        #[inline(never)]
+        fn register_type_dependencies(registry: &mut bevy_reflect::TypeRegistry) {
+            <i32 as bevy_reflect::__macro_exports::RegisterForReflection>::__register(
+                registry,
+            );
+        }
+    }
+    impl bevy_reflect::Typed for A
+    where
+        A: ::core::any::Any + ::core::marker::Send + ::core::marker::Sync,
+        i32: bevy_reflect::FromReflect + bevy_reflect::TypePath
+            + bevy_reflect::MaybeTyped
+            + bevy_reflect::__macro_exports::RegisterForReflection,
+    {
+        #[inline]
+        fn type_info() -> &'static bevy_reflect::TypeInfo {
+            static CELL: bevy_reflect::utility::NonGenericTypeInfoCell = bevy_reflect::utility::NonGenericTypeInfoCell::new();
+            CELL.get_or_set(|| {
+                bevy_reflect::TypeInfo::TupleStruct(
+                    bevy_reflect::TupleStructInfo::new::<
+                        Self,
+                    >(
+                            &[
+                                bevy_reflect::UnnamedField::new::<i32>(0usize)
+                                    .with_custom_attributes(
+                                        bevy_reflect::attributes::CustomAttributes::default(),
+                                    ),
+                            ],
+                        )
+                        .with_custom_attributes(
+                            bevy_reflect::attributes::CustomAttributes::default(),
+                        ),
+                )
+            })
+        }
+    }
+    impl bevy_reflect::TypePath for A
+    where
+        A: ::core::any::Any + ::core::marker::Send + ::core::marker::Sync,
+    {
+        fn type_path() -> &'static str {
+            "macro_tests::A"
+        }
+        fn short_type_path() -> &'static str {
+            "A"
+        }
+        fn type_ident() -> Option<&'static str> {
+            ::core::option::Option::Some("A")
+        }
+        fn crate_name() -> Option<&'static str> {
+            ::core::option::Option::Some("macro_tests".split(':').next().unwrap())
+        }
+        fn module_path() -> Option<&'static str> {
+            ::core::option::Option::Some("macro_tests")
+        }
+    }
+    impl bevy_reflect::Reflect for A
+    where
+        A: ::core::any::Any + ::core::marker::Send + ::core::marker::Sync,
+        i32: bevy_reflect::FromReflect + bevy_reflect::TypePath
+            + bevy_reflect::MaybeTyped
+            + bevy_reflect::__macro_exports::RegisterForReflection,
+    {
+        #[inline]
+        fn into_any(
+            self: ::std::boxed::Box<Self>,
+        ) -> ::std::boxed::Box<dyn ::core::any::Any> {
+            self
+        }
+        #[inline]
+        fn as_any(&self) -> &dyn ::core::any::Any {
+            self
+        }
+        #[inline]
+        fn as_any_mut(&mut self) -> &mut dyn ::core::any::Any {
+            self
+        }
+        #[inline]
+        fn into_reflect(
+            self: ::std::boxed::Box<Self>,
+        ) -> ::std::boxed::Box<dyn bevy_reflect::Reflect> {
+            self
+        }
+        #[inline]
+        fn as_reflect(&self) -> &dyn bevy_reflect::Reflect {
+            self
+        }
+        #[inline]
+        fn as_reflect_mut(&mut self) -> &mut dyn bevy_reflect::Reflect {
+            self
+        }
+        #[inline]
+        fn set(
+            &mut self,
+            value: ::std::boxed::Box<dyn bevy_reflect::Reflect>,
+        ) -> ::core::result::Result<(), ::std::boxed::Box<dyn bevy_reflect::Reflect>> {
+            *self = <dyn bevy_reflect::Reflect>::take(value)?;
+            ::core::result::Result::Ok(())
+        }
+    }
+    impl bevy_reflect::TupleStruct for A
+    where
+        A: ::core::any::Any + ::core::marker::Send + ::core::marker::Sync,
+        i32: bevy_reflect::FromReflect + bevy_reflect::TypePath
+            + bevy_reflect::MaybeTyped
+            + bevy_reflect::__macro_exports::RegisterForReflection,
+    {
+        fn field(
+            &self,
+            index: usize,
+        ) -> ::core::option::Option<&dyn bevy_reflect::PartialReflect> {
+            match index {
+                0usize => ::core::option::Option::Some(&self.0),
+                _ => ::core::option::Option::None,
+            }
+        }
+        fn field_mut(
+            &mut self,
+            index: usize,
+        ) -> ::core::option::Option<&mut dyn bevy_reflect::PartialReflect> {
+            match index {
+                0usize => ::core::option::Option::Some(&mut self.0),
+                _ => ::core::option::Option::None,
+            }
+        }
+        #[inline]
+        fn field_len(&self) -> usize {
+            1usize
+        }
+        #[inline]
+        fn iter_fields(&self) -> bevy_reflect::TupleStructFieldIter {
+            bevy_reflect::TupleStructFieldIter::new(self)
+        }
+        fn clone_dynamic(&self) -> bevy_reflect::DynamicTupleStruct {
+            let mut dynamic: bevy_reflect::DynamicTupleStruct = ::core::default::Default::default();
+            dynamic
+                .set_represented_type(
+                    bevy_reflect::PartialReflect::get_represented_type_info(self),
+                );
+            dynamic.insert_boxed(bevy_reflect::PartialReflect::clone_value(&self.0));
+            dynamic
+        }
+    }
+    impl bevy_reflect::PartialReflect for A
+    where
+        A: ::core::any::Any + ::core::marker::Send + ::core::marker::Sync,
+        i32: bevy_reflect::FromReflect + bevy_reflect::TypePath
+            + bevy_reflect::MaybeTyped
+            + bevy_reflect::__macro_exports::RegisterForReflection,
+    {
+        #[inline]
+        fn get_represented_type_info(
+            &self,
+        ) -> ::core::option::Option<&'static bevy_reflect::TypeInfo> {
+            ::core::option::Option::Some(<Self as bevy_reflect::Typed>::type_info())
+        }
+        #[inline]
+        fn clone_value(&self) -> ::std::boxed::Box<dyn bevy_reflect::PartialReflect> {
+            ::std::boxed::Box::new(bevy_reflect::TupleStruct::clone_dynamic(self))
+        }
+        #[inline]
+        fn try_apply(
+            &mut self,
+            value: &dyn bevy_reflect::PartialReflect,
+        ) -> ::core::result::Result<(), bevy_reflect::ApplyError> {
+            if let bevy_reflect::ReflectRef::TupleStruct(struct_value) = bevy_reflect::PartialReflect::reflect_ref(
+                value,
+            ) {
+                for (i, value) in ::core::iter::Iterator::enumerate(
+                    bevy_reflect::TupleStruct::iter_fields(struct_value),
+                ) {
+                    if let ::core::option::Option::Some(v) = bevy_reflect::TupleStruct::field_mut(
+                        self,
+                        i,
+                    ) {
+                        bevy_reflect::PartialReflect::try_apply(v, value)?;
+                    }
+                }
+            } else {
+                return ::core::result::Result::Err(bevy_reflect::ApplyError::MismatchedKinds {
+                    from_kind: bevy_reflect::PartialReflect::reflect_kind(value),
+                    to_kind: bevy_reflect::ReflectKind::TupleStruct,
+                });
+            }
+            ::core::result::Result::Ok(())
+        }
+        #[inline]
+        fn reflect_kind(&self) -> bevy_reflect::ReflectKind {
+            bevy_reflect::ReflectKind::TupleStruct
+        }
+        #[inline]
+        fn reflect_ref(&self) -> bevy_reflect::ReflectRef {
+            bevy_reflect::ReflectRef::TupleStruct(self)
+        }
+        #[inline]
+        fn reflect_mut(&mut self) -> bevy_reflect::ReflectMut {
+            bevy_reflect::ReflectMut::TupleStruct(self)
+        }
+        #[inline]
+        fn reflect_owned(self: ::std::boxed::Box<Self>) -> bevy_reflect::ReflectOwned {
+            bevy_reflect::ReflectOwned::TupleStruct(self)
+        }
+        #[inline]
+        fn try_into_reflect(
+            self: ::std::boxed::Box<Self>,
+        ) -> ::core::result::Result<
+            ::std::boxed::Box<dyn bevy_reflect::Reflect>,
+            ::std::boxed::Box<dyn bevy_reflect::PartialReflect>,
+        > {
+            ::core::result::Result::Ok(self)
+        }
+        #[inline]
+        fn try_as_reflect(&self) -> ::core::option::Option<&dyn bevy_reflect::Reflect> {
+            ::core::option::Option::Some(self)
+        }
+        #[inline]
+        fn try_as_reflect_mut(
+            &mut self,
+        ) -> ::core::option::Option<&mut dyn bevy_reflect::Reflect> {
+            ::core::option::Option::Some(self)
+        }
+        #[inline]
+        fn into_partial_reflect(
+            self: ::std::boxed::Box<Self>,
+        ) -> ::std::boxed::Box<dyn bevy_reflect::PartialReflect> {
+            self
+        }
+        #[inline]
+        fn as_partial_reflect(&self) -> &dyn bevy_reflect::PartialReflect {
+            self
+        }
+        #[inline]
+        fn as_partial_reflect_mut(&mut self) -> &mut dyn bevy_reflect::PartialReflect {
+            self
+        }
+        fn reflect_partial_eq(
+            &self,
+            value: &dyn bevy_reflect::PartialReflect,
+        ) -> ::core::option::Option<bool> {
+            (bevy_reflect::tuple_struct_partial_eq)(self, value)
+        }
+    }
+    impl bevy_reflect::FromReflect for A
+    where
+        A: ::core::any::Any + ::core::marker::Send + ::core::marker::Sync,
+        i32: bevy_reflect::FromReflect + bevy_reflect::TypePath
+            + bevy_reflect::MaybeTyped
+            + bevy_reflect::__macro_exports::RegisterForReflection,
+    {
+        fn from_reflect(
+            reflect: &dyn bevy_reflect::PartialReflect,
+        ) -> ::core::option::Option<Self> {
+            if let bevy_reflect::ReflectRef::TupleStruct(__ref_struct) = bevy_reflect::PartialReflect::reflect_ref(
+                reflect,
+            ) {
+                let __this = Self {
+                    0: (|| <i32 as bevy_reflect::FromReflect>::from_reflect(
+                        bevy_reflect::TupleStruct::field(__ref_struct, 0)?,
+                    ))()?,
+                };
+                ::core::option::Option::Some(__this)
+            } else {
+                ::core::option::Option::None
+            }
+        }
+    }
+};
+#[automatically_derived]
+impl ::core::clone::Clone for A {
+    #[inline]
+    fn clone(&self) -> A {
+        A(::core::clone::Clone::clone(&self.0))
+    }
+}
+impl TT for A {
+    fn foo(&self) -> i32 {
+        self.0
+    }
+}
+struct B(i32);
+#[automatically_derived]
+impl ::core::fmt::Debug for B {
+    #[inline]
+    fn fmt(&self, f: &mut ::core::fmt::Formatter) -> ::core::fmt::Result {
+        ::core::fmt::Formatter::debug_tuple_field1_finish(f, "B", &&self.0)
+    }
+}
+const _: () = {
+    #[allow(unused_mut)]
+    impl bevy_reflect::GetTypeRegistration for B
+    where
+        B: ::core::any::Any + ::core::marker::Send + ::core::marker::Sync,
+        i32: bevy_reflect::FromReflect + bevy_reflect::TypePath
+            + bevy_reflect::MaybeTyped
+            + bevy_reflect::__macro_exports::RegisterForReflection,
+    {
+        fn get_type_registration() -> bevy_reflect::TypeRegistration {
+            let mut registration = bevy_reflect::TypeRegistration::of::<Self>();
+            registration
+                .insert::<
+                    bevy_reflect::ReflectFromPtr,
+                >(bevy_reflect::FromType::<Self>::from_type());
+            registration
+                .insert::<
+                    bevy_reflect::ReflectFromReflect,
+                >(bevy_reflect::FromType::<Self>::from_type());
+            registration
+        }
+        #[inline(never)]
+        fn register_type_dependencies(registry: &mut bevy_reflect::TypeRegistry) {
+            <i32 as bevy_reflect::__macro_exports::RegisterForReflection>::__register(
+                registry,
+            );
+        }
+    }
+    impl bevy_reflect::Typed for B
+    where
+        B: ::core::any::Any + ::core::marker::Send + ::core::marker::Sync,
+        i32: bevy_reflect::FromReflect + bevy_reflect::TypePath
+            + bevy_reflect::MaybeTyped
+            + bevy_reflect::__macro_exports::RegisterForReflection,
+    {
+        #[inline]
+        fn type_info() -> &'static bevy_reflect::TypeInfo {
+            static CELL: bevy_reflect::utility::NonGenericTypeInfoCell = bevy_reflect::utility::NonGenericTypeInfoCell::new();
+            CELL.get_or_set(|| {
+                bevy_reflect::TypeInfo::TupleStruct(
+                    bevy_reflect::TupleStructInfo::new::<
+                        Self,
+                    >(
+                            &[
+                                bevy_reflect::UnnamedField::new::<i32>(0usize)
+                                    .with_custom_attributes(
+                                        bevy_reflect::attributes::CustomAttributes::default(),
+                                    ),
+                            ],
+                        )
+                        .with_custom_attributes(
+                            bevy_reflect::attributes::CustomAttributes::default(),
+                        ),
+                )
+            })
+        }
+    }
+    impl bevy_reflect::TypePath for B
+    where
+        B: ::core::any::Any + ::core::marker::Send + ::core::marker::Sync,
+    {
+        fn type_path() -> &'static str {
+            "macro_tests::B"
+        }
+        fn short_type_path() -> &'static str {
+            "B"
+        }
+        fn type_ident() -> Option<&'static str> {
+            ::core::option::Option::Some("B")
+        }
+        fn crate_name() -> Option<&'static str> {
+            ::core::option::Option::Some("macro_tests".split(':').next().unwrap())
+        }
+        fn module_path() -> Option<&'static str> {
+            ::core::option::Option::Some("macro_tests")
+        }
+    }
+    impl bevy_reflect::Reflect for B
+    where
+        B: ::core::any::Any + ::core::marker::Send + ::core::marker::Sync,
+        i32: bevy_reflect::FromReflect + bevy_reflect::TypePath
+            + bevy_reflect::MaybeTyped
+            + bevy_reflect::__macro_exports::RegisterForReflection,
+    {
+        #[inline]
+        fn into_any(
+            self: ::std::boxed::Box<Self>,
+        ) -> ::std::boxed::Box<dyn ::core::any::Any> {
+            self
+        }
+        #[inline]
+        fn as_any(&self) -> &dyn ::core::any::Any {
+            self
+        }
+        #[inline]
+        fn as_any_mut(&mut self) -> &mut dyn ::core::any::Any {
+            self
+        }
+        #[inline]
+        fn into_reflect(
+            self: ::std::boxed::Box<Self>,
+        ) -> ::std::boxed::Box<dyn bevy_reflect::Reflect> {
+            self
+        }
+        #[inline]
+        fn as_reflect(&self) -> &dyn bevy_reflect::Reflect {
+            self
+        }
+        #[inline]
+        fn as_reflect_mut(&mut self) -> &mut dyn bevy_reflect::Reflect {
+            self
+        }
+        #[inline]
+        fn set(
+            &mut self,
+            value: ::std::boxed::Box<dyn bevy_reflect::Reflect>,
+        ) -> ::core::result::Result<(), ::std::boxed::Box<dyn bevy_reflect::Reflect>> {
+            *self = <dyn bevy_reflect::Reflect>::take(value)?;
+            ::core::result::Result::Ok(())
+        }
+    }
+    impl bevy_reflect::TupleStruct for B
+    where
+        B: ::core::any::Any + ::core::marker::Send + ::core::marker::Sync,
+        i32: bevy_reflect::FromReflect + bevy_reflect::TypePath
+            + bevy_reflect::MaybeTyped
+            + bevy_reflect::__macro_exports::RegisterForReflection,
+    {
+        fn field(
+            &self,
+            index: usize,
+        ) -> ::core::option::Option<&dyn bevy_reflect::PartialReflect> {
+            match index {
+                0usize => ::core::option::Option::Some(&self.0),
+                _ => ::core::option::Option::None,
+            }
+        }
+        fn field_mut(
+            &mut self,
+            index: usize,
+        ) -> ::core::option::Option<&mut dyn bevy_reflect::PartialReflect> {
+            match index {
+                0usize => ::core::option::Option::Some(&mut self.0),
+                _ => ::core::option::Option::None,
+            }
+        }
+        #[inline]
+        fn field_len(&self) -> usize {
+            1usize
+        }
+        #[inline]
+        fn iter_fields(&self) -> bevy_reflect::TupleStructFieldIter {
+            bevy_reflect::TupleStructFieldIter::new(self)
+        }
+        fn clone_dynamic(&self) -> bevy_reflect::DynamicTupleStruct {
+            let mut dynamic: bevy_reflect::DynamicTupleStruct = ::core::default::Default::default();
+            dynamic
+                .set_represented_type(
+                    bevy_reflect::PartialReflect::get_represented_type_info(self),
+                );
+            dynamic.insert_boxed(bevy_reflect::PartialReflect::clone_value(&self.0));
+            dynamic
+        }
+    }
+    impl bevy_reflect::PartialReflect for B
+    where
+        B: ::core::any::Any + ::core::marker::Send + ::core::marker::Sync,
+        i32: bevy_reflect::FromReflect + bevy_reflect::TypePath
+            + bevy_reflect::MaybeTyped
+            + bevy_reflect::__macro_exports::RegisterForReflection,
+    {
+        #[inline]
+        fn get_represented_type_info(
+            &self,
+        ) -> ::core::option::Option<&'static bevy_reflect::TypeInfo> {
+            ::core::option::Option::Some(<Self as bevy_reflect::Typed>::type_info())
+        }
+        #[inline]
+        fn clone_value(&self) -> ::std::boxed::Box<dyn bevy_reflect::PartialReflect> {
+            ::std::boxed::Box::new(bevy_reflect::TupleStruct::clone_dynamic(self))
+        }
+        #[inline]
+        fn try_apply(
+            &mut self,
+            value: &dyn bevy_reflect::PartialReflect,
+        ) -> ::core::result::Result<(), bevy_reflect::ApplyError> {
+            if let bevy_reflect::ReflectRef::TupleStruct(struct_value) = bevy_reflect::PartialReflect::reflect_ref(
+                value,
+            ) {
+                for (i, value) in ::core::iter::Iterator::enumerate(
+                    bevy_reflect::TupleStruct::iter_fields(struct_value),
+                ) {
+                    if let ::core::option::Option::Some(v) = bevy_reflect::TupleStruct::field_mut(
+                        self,
+                        i,
+                    ) {
+                        bevy_reflect::PartialReflect::try_apply(v, value)?;
+                    }
+                }
+            } else {
+                return ::core::result::Result::Err(bevy_reflect::ApplyError::MismatchedKinds {
+                    from_kind: bevy_reflect::PartialReflect::reflect_kind(value),
+                    to_kind: bevy_reflect::ReflectKind::TupleStruct,
+                });
+            }
+            ::core::result::Result::Ok(())
+        }
+        #[inline]
+        fn reflect_kind(&self) -> bevy_reflect::ReflectKind {
+            bevy_reflect::ReflectKind::TupleStruct
+        }
+        #[inline]
+        fn reflect_ref(&self) -> bevy_reflect::ReflectRef {
+            bevy_reflect::ReflectRef::TupleStruct(self)
+        }
+        #[inline]
+        fn reflect_mut(&mut self) -> bevy_reflect::ReflectMut {
+            bevy_reflect::ReflectMut::TupleStruct(self)
+        }
+        #[inline]
+        fn reflect_owned(self: ::std::boxed::Box<Self>) -> bevy_reflect::ReflectOwned {
+            bevy_reflect::ReflectOwned::TupleStruct(self)
+        }
+        #[inline]
+        fn try_into_reflect(
+            self: ::std::boxed::Box<Self>,
+        ) -> ::core::result::Result<
+            ::std::boxed::Box<dyn bevy_reflect::Reflect>,
+            ::std::boxed::Box<dyn bevy_reflect::PartialReflect>,
+        > {
+            ::core::result::Result::Ok(self)
+        }
+        #[inline]
+        fn try_as_reflect(&self) -> ::core::option::Option<&dyn bevy_reflect::Reflect> {
+            ::core::option::Option::Some(self)
+        }
+        #[inline]
+        fn try_as_reflect_mut(
+            &mut self,
+        ) -> ::core::option::Option<&mut dyn bevy_reflect::Reflect> {
+            ::core::option::Option::Some(self)
+        }
+        #[inline]
+        fn into_partial_reflect(
+            self: ::std::boxed::Box<Self>,
+        ) -> ::std::boxed::Box<dyn bevy_reflect::PartialReflect> {
+            self
+        }
+        #[inline]
+        fn as_partial_reflect(&self) -> &dyn bevy_reflect::PartialReflect {
+            self
+        }
+        #[inline]
+        fn as_partial_reflect_mut(&mut self) -> &mut dyn bevy_reflect::PartialReflect {
+            self
+        }
+        fn reflect_partial_eq(
+            &self,
+            value: &dyn bevy_reflect::PartialReflect,
+        ) -> ::core::option::Option<bool> {
+            (bevy_reflect::tuple_struct_partial_eq)(self, value)
+        }
+    }
+    impl bevy_reflect::FromReflect for B
+    where
+        B: ::core::any::Any + ::core::marker::Send + ::core::marker::Sync,
+        i32: bevy_reflect::FromReflect + bevy_reflect::TypePath
+            + bevy_reflect::MaybeTyped
+            + bevy_reflect::__macro_exports::RegisterForReflection,
+    {
+        fn from_reflect(
+            reflect: &dyn bevy_reflect::PartialReflect,
+        ) -> ::core::option::Option<Self> {
+            if let bevy_reflect::ReflectRef::TupleStruct(__ref_struct) = bevy_reflect::PartialReflect::reflect_ref(
+                reflect,
+            ) {
+                let __this = Self {
+                    0: (|| <i32 as bevy_reflect::FromReflect>::from_reflect(
+                        bevy_reflect::TupleStruct::field(__ref_struct, 0)?,
+                    ))()?,
+                };
+                ::core::option::Option::Some(__this)
+            } else {
+                ::core::option::Option::None
+            }
+        }
+    }
+};
+#[automatically_derived]
+impl ::core::clone::Clone for B {
+    #[inline]
+    fn clone(&self) -> B {
+        B(::core::clone::Clone::clone(&self.0))
+    }
+}
+impl TT for B {
+    fn foo(&self) -> i32 {
+        self.0
+    }
+}
+#[rustc_main]
+#[coverage(off)]
+#[doc(hidden)]
+pub fn main() -> () {
+    extern crate test;
+    test::test_main_static(&[])
+}

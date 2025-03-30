@@ -3,4 +3,15 @@ name = "create_enum"
 version = "0.1.0"
 edition = "2024"
 
+[dev-dependencies]
+bevy_reflect = "0.15.3"
+enum_dispatch = "0.3.13"
+strum = { version = "0.27.1", features = ["derive"] }
+
 [dependencies]
+proc-macro2 = "1.0.94"
+quote = "1.0.40"
+syn = "2.0.100"
+
+[lib]
+proc-macro = true
